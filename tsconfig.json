@@ -6,6 +6,7 @@
     "preserveSymlinks": true,
     "noEmitOnError": false,
     "baseUrl": "./",
+    "lib": ["ESNext"],
     /* Bundler mode */
     // "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
