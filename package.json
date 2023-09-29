@@ -1,7 +1,10 @@
 {
-  "name": "plugin",
+  "name": "ex-plugin",
+  "pluginName": "Plugin name",
   "version": "1.0.0",
-  "description": "",
+  "description": "Description for plugin.",
+  "author": "Author Example <example@example.com>",
+  "homepage": "https://github.com/manga-raiku",
   "main": "index.js",
   "scripts": {
     "format": "prettier -w ./src",
@@ -15,7 +18,6 @@
     "release": "bumpp"
   },
   "keywords": [],
-  "author": "",
   "license": "LGPL-3.0-or-later",
   "dependencies": {
     "cheerio": "1.0.0-rc.12",

@@ -1,14 +1,16 @@
 import { definePackage } from "raiku-pgs/plugin"
 
+import { name as id, pluginName as name, version, author, description, homepage } from "package.json"
+
 import favicon from "./favicon.png?inline"
-import { version } from "./package.json"
 
 export const meta = definePackage({
-  id: "plugin",
-  name: "Plugin template",
+  id,
+  name,
   favicon,
   version,
-  description: "Plugin template description",
-  author: "Tachibana Shin <tachibshin@duck.com>",
-  updatedAt: Date.now()
+  description,
+  author,
+  homepage,
+  updatedAt: import.meta.env.DEV ? Date.now() : __NOW__
 })
