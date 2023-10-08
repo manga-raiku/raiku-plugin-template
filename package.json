@@ -11,10 +11,11 @@
     "pretit": "prettier ./src",
     "lint": "eslint --ext .js,.ts ./ --fix",
     "test": "vitest",
+    "test:ci": "vitest --run",
     "dev": "vite",
     "build": "tsx ./scripts/build.ts",
     "typing": "tsc --noEmit",
-    "ci": "pnpm format && pnpm lint && pnpm typing",
+    "ci": "pnpm format && pnpm lint && pnpm typing && pnpm test:ci",
     "release": "bumpp"
   },
   "keywords": [],
