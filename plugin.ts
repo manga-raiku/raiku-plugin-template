@@ -12,7 +12,7 @@ import {
 const Rankings: Ranking[] = []
 const Servers: Server[] = []
 
-class Nettruyen implements API {
+class Plugin implements API {
   public readonly Rankings = Rankings
   public readonly Servers = Servers
 
@@ -65,4 +65,4 @@ class Nettruyen implements API {
   ) {}
 }
 
-defineApi(Nettruyen)
+defineApi(Plugin)

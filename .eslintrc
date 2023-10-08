@@ -4,6 +4,13 @@
     "n/no-unpublished-import" : "off",
     "functional/prefer-immutable-types": "off",
     "functional/no-classes": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "n/no-unsupported-features/es-builtins": [
+      "error",
+      {
+        "version": ">=16.0.0",
+        "ignores": []
+      }
+    ]
   }
 }

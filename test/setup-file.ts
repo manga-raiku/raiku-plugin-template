@@ -1,6 +1,17 @@
-import type { GetOption, PostOption } from "client-ext-animevsub-helper"
+import type { GetOption, Http, PostOption } from "client-ext-animevsub-helper"
 import { parseDom } from "raiku-pgs/thread"
 
+type Response<Type extends GetOption["responseType"]> = Omit<
+  Awaited<ReturnType<typeof Http.get>>,
+  "data"
+> & {
+  data: Type extends "json"
+    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      any
+    : Type extends "arraybuffer"
+    ? ArrayBuffer
+    : string
+}
 function get<
   ReturnType extends GetOption["responseType"] | undefined
 >(
@@ -14,7 +25,7 @@ function get<
       headers: options.headers
     }
   ).then(async (res) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, functional/no-let
     let data: any
     switch (options.responseType) {
       case "arraybuffer":
@@ -51,7 +62,7 @@ export function post<
       headers: options.headers
     }
   ).then(async (res) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, functional/no-let
     let data: any
     switch (options.responseType) {
       case "arraybuffer":
