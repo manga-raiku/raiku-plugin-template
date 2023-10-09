@@ -1,27 +1,14 @@
-import { existsSync, rmdirSync } from "fs"
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+import { copyFileSync, existsSync, mkdirSync, rmdirSync } from "fs"
 import { join } from "path"
 
-import { transform } from "esbuild"
-import type { Plugin } from "vite"
 import { build } from "vite"
 
 if (existsSync(join(__dirname, "../dist")))
   rmdirSync(join(__dirname, "../dist"), { recursive: true })
 
-function minifyBundles(): Plugin {
-  return {
-    name: "minifyBundles",
-    renderChunk: {
-      order: "post",
-      async handler(code, chunk, outputOptions) {
-        if (outputOptions.format === "es" && chunk.fileName.endsWith(".mjs"))
-          return await transform(code, { minify: true, treeShaking: true })
-
-        return code
-      }
-    }
-  }
-}
+mkdirSync(join(__dirname, "../dist"))
+copyFileSync(join(__dirname, "../README.md"), join(__dirname, "../dist/README.md"))
 
 build({
   base: "./",
@@ -34,8 +21,7 @@ build({
       fileName: (_format, entry) => entry + ".mjs"
     },
     target: "es2017"
-  },
-  plugins: [minifyBundles()]
+  }
 })
 
 build({
@@ -49,6 +35,5 @@ build({
       fileName: (_format, entry) => entry + ".mjs"
     },
     target: "es2017"
-  },
-  plugins: [minifyBundles()]
+  }
 })
