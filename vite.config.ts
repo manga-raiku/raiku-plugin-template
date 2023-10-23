@@ -28,7 +28,7 @@ export default defineConfig({
             "removeExt",
             "parseQuery"
           ],
-          package: ["sourceId"],
+          package: ["sourceId"]
         }
       ]
     })
