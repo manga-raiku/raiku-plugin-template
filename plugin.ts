@@ -14,11 +14,7 @@ class Plugin implements API {
   public readonly Servers = Servers
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  async setup() {
-    return {
-      isSupport: true
-    }
-  }
+  async setup() {}
 
   async index() {}
 
