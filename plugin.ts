@@ -1,9 +1,6 @@
-import type { GetOption } from "client-ext-animevsub-helper"
 import {
   type API,
   defineApi,
-  type FetchGet,
-  type FetchPost,
   type ID,
   type Ranking,
   type Server
@@ -16,15 +13,11 @@ class Plugin implements API {
   public readonly Rankings = Rankings
   public readonly Servers = Servers
 
-  public readonly get: FetchGet<GetOption["responseType"]>
-  public readonly post: FetchPost<GetOption["responseType"]>
-
-  constructor(
-    get: FetchGet<GetOption["responseType"]>,
-    post: FetchPost<GetOption["responseType"]>
-  ) {
-    this.get = get
-    this.post = post
+  // eslint-disable-next-line @typescript-eslint/require-await
+  async setup() {
+    return {
+      isSupport: true
+    }
   }
 
   async index() {}
