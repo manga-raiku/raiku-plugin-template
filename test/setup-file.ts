@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import type { GetOption, Http, PostOption } from "client-ext-animevsub-helper"
+import { AppInfo } from "raiku-pgs/plugin"
 import { parseDom } from "raiku-pgs/thread"
 
 type Response<Type extends GetOption["responseType"]> = Omit<
@@ -7,11 +8,11 @@ type Response<Type extends GetOption["responseType"]> = Omit<
   "data"
 > & {
   data: Type extends "json"
-    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      any
-    : Type extends "arraybuffer"
-    ? ArrayBuffer
-    : string
+  ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  any
+  : Type extends "arraybuffer"
+  ? ArrayBuffer
+  : string
 }
 function get<
   ReturnType extends GetOption["responseType"] | undefined
@@ -87,5 +88,12 @@ export function post<
   })
 }
 
-// eslint-disable-next-line functional/immutable-data
-Object.assign(self, { parseDom, get, post })
+// eslint-disable-next-line no-redeclare, no-import-assign
+const AppInfo: AppInfo = {
+  mode: "spa",
+  extension: false,
+  version: "0.0.1"
+}
+
+// eslint-disable-next-line functional/immutable-data, @typescript-eslint/no-empty-function
+Object.assign(self, { parseDom, get, post, setReferrers: () => { }, AppInfo })

@@ -13,7 +13,6 @@ class Plugin implements API {
   public readonly Rankings = Rankings
   public readonly Servers = Servers
 
-  // eslint-disable-next-line @typescript-eslint/require-await
   async setup() {}
 
   async index() {}
