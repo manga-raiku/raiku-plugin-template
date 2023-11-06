@@ -28,7 +28,7 @@
   "devDependencies": {
     "@tachibana-shin/eslint-config": "^1.1.1",
     "@types/node": "^20.8.9",
-    "@typescript-eslint/parser": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.1",
     "bumpp": "^9.2.0",
     "esbuild": "^0.19.5",
     "esbuild-runner": "^2.2.2",
