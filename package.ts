@@ -1,7 +1,7 @@
 import { author, description, homepage, name as id, pluginName as name, version } from "package.json"
 import { definePackage } from "raiku-pgs/plugin"
 
-import favicon from "./favicon.png?inline"
+import favicon from "./favicon.png?base64"
 
 export const sourceId = id
 export const meta = definePackage({

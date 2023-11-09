@@ -86,6 +86,8 @@ export function post<ReturnType extends GetOption["responseType"] | undefined>(
 const AppInfo: AppInfo = {
   mode: "spa",
   extension: false,
+  native: false,
+  standalone: false,
   version: "0.0.1"
 }
 
