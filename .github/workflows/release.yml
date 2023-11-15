@@ -36,18 +36,16 @@ jobs:
         run: pnpm build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           folder: dist
 
-      - name: Conventional Changelog Action
-        uses: TriPSs/conventional-changelog-action@v3
+      - name: "✏️ Generate release changelog"
+        id: changelog
+        uses: heinrichreimer/github-changelog-generator-action@v2.3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          skip-git-pull: "true"
-          tag-prefix: "v"
-          output-file: "false"
-          git-branch: "main"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          excludeTagsRegex: android|ios@.*
 
       - name: Create Release
         id: create_release
@@ -57,6 +55,12 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
-          body: ${{ steps.changelog.outputs.clean_changelog  }}
+          body: ${{ steps.changelog.outputs.changelog }}
           draft: false
           prerelease: false
+      
+      - name: Sleep 5s
+        run: sleep 5s
+
+      - name: Ping to Market Plugins
+        run: pnpm ping-update "${{ secrets.GITHUB_TOKEN }}"

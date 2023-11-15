@@ -16,7 +16,8 @@
     "build": "tsx ./scripts/build.ts",
     "typing": "tsc --noEmit",
     "ci": "pnpm format && pnpm lint && pnpm typing && pnpm test:ci",
-    "release": "bumpp"
+    "release": "bumpp",
+    "ping-update": "tsx ./scripts/ping-update"
   },
   "keywords": [],
   "license": "LGPL-3.0-or-later",
